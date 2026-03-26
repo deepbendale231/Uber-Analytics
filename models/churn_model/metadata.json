@@ -1,0 +1,17 @@
+{
+  "churn_days": 30,
+  "experiment_name": "churn_prediction",
+  "feature_names": [
+    "days_since_last_ride",
+    "total_rides",
+    "rides_last_30d",
+    "rides_last_60d",
+    "avg_booking_value",
+    "avg_rating_given",
+    "preferred_vehicle",
+    "preferred_payment",
+    "completion_rate",
+    "avg_ride_distance"
+  ],
+  "threshold": 0.5
+}

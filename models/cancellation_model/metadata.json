@@ -1,0 +1,32 @@
+{
+  "experiment_name": "cancellation_prediction",
+  "feature_names": [
+    "hour_of_day",
+    "day_of_week",
+    "is_weekend",
+    "is_peak_hour",
+    "ride_distance_km",
+    "booking_value_inr",
+    "vehicle_type_encoded",
+    "payment_method_encoded",
+    "customer_ride_count"
+  ],
+  "threshold": 0.5,
+  "vehicle_categories": [
+    "Auto",
+    "Bike",
+    "Go Mini",
+    "Go Sedan",
+    "Premier Sedan",
+    "Uber XL",
+    "eBike"
+  ],
+  "payment_categories": [
+    "Cash",
+    "Credit Card",
+    "Debit Card",
+    "UPI",
+    "Uber Wallet",
+    "unknown"
+  ]
+}
