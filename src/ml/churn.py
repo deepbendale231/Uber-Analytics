@@ -9,7 +9,10 @@ import joblib
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import shap
+try:
+    import shap
+except ModuleNotFoundError:
+    shap = None
 from sklearn.metrics import average_precision_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
@@ -264,6 +267,8 @@ class ChurnPredictor:
         """Compute SHAP values for current model and feature matrix."""
         if self.model is None:
             raise ValueError("Model is not trained.")
+        if shap is None:
+            raise RuntimeError("SHAP is not installed in this runtime.")
 
         explainer = shap.Explainer(self.model)
         values = explainer(X).values

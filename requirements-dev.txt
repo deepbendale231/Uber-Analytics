@@ -1,0 +1,11 @@
+-r requirements.txt
+pytest==8.3.4
+ruff==0.9.6
+pandera==0.22.1
+mlflow==2.20.3
+prophet==1.1.6
+statsmodels==0.14.4
+reportlab==4.2.5
+apscheduler==3.10.4
+streamlit-option-menu==0.3.12
+streamlit-autorefresh==0.0.3
