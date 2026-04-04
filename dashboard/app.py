@@ -5,16 +5,16 @@ A comprehensive 4-tab analytics dashboard with real-time predictions and busines
 Connects to FastAPI backend for data and ML predictions.
 """
 
+import os
+
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import requests
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional, List
 import logging
-import io
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -72,7 +72,7 @@ st.markdown("""
 # CONFIGURATION
 # ============================================================================
 
-API_BASE_URL = st.secrets.get("API_BASE_URL", "http://localhost:8000")
+API_BASE_URL = os.getenv("API_BASE_URL", st.secrets.get("API_BASE_URL", "http://localhost:8000"))
 REFRESH_INTERVAL = 60  # seconds
 CACHE_TTL = 300  # 5 minutes
 

@@ -148,6 +148,19 @@ docker run -p 8501:8501 uber-analytics:latest streamlit run dashboard/app.py \
   --server.port 8501 --server.address 0.0.0.0
 ```
 
+## ⚡ Fastest Cloud Deploy
+
+If you want the quickest path to a live dashboard, deploy the whole app as one Render web service:
+
+1. Connect the repository to Render.
+2. Use the included [render.yaml](render.yaml) blueprint.
+3. Set the start command to `bash start.sh`.
+4. Deploy one service that runs the API on `127.0.0.1:8000` and the Streamlit UI on the public port.
+
+This works because the dashboard talks to the API on localhost inside the same container, so you do not need to manage two separate cloud services.
+
+If you prefer split deployment later, keep the API and dashboard as separate services and point `API_BASE_URL` at the public API URL.
+
 ## 📊 Data Loading
 
 The API loads data at startup from `DATA/ncr_ride_bookings.csv`:
