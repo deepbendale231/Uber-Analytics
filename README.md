@@ -11,9 +11,11 @@ Analytics, ML models, a REST API and a dashboard on Delhi NCR ride data (2024).
 ![XGBoost](https://img.shields.io/badge/XGBoost-models-EB5E28)
 ![Tests](https://img.shields.io/badge/tests-28%20functions-brightgreen)
 
-[**Findings**](#what-the-data-says) · [**Architecture**](#how-it-fits-together) · [**API**](#api) · [**Run it**](#run-it) · [**Limitations**](#limitations)
+[**Live dashboard**](https://uber-analytics.onrender.com) · [**Findings**](#what-the-data-says) · [**Architecture**](#how-it-fits-together) · [**API**](#api) · [**Run it**](#run-it) · [**Limitations**](#limitations)
 
 </div>
+
+> The live dashboard runs on a free tier, so the first load can take about a minute.
 
 | Bookings | Completed | Lost to cancellations | Peak hour | Completed revenue |
 |:---:|:---:|:---:|:---:|:---:|
