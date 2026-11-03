@@ -1,15 +1,31 @@
+<div align="center">
+
 # Uber NCR Ride Analytics
 
-Analytics, prediction and a dashboard for 150,000 ride bookings from Uber in the Delhi NCR region (2024): where rides are lost, who the repeat customers are, and what a booking's cancellation risk looks like.
+**Where do 150,000 ride bookings go wrong, and can we predict it?**<br>
+Analytics, ML models, a REST API and a dashboard on Delhi NCR ride data (2024).
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-dashboard-FF4B4B?logo=streamlit&logoColor=white)
 ![XGBoost](https://img.shields.io/badge/XGBoost-models-EB5E28)
+![Tests](https://img.shields.io/badge/tests-28%20functions-brightgreen)
+
+[**Findings**](#what-the-data-says) · [**Architecture**](#how-it-fits-together) · [**API**](#api) · [**Run it**](#run-it) · [**Limitations**](#limitations)
+
+</div>
+
+| Bookings | Completed | Lost to cancellations | Peak hour | Completed revenue |
+|:---:|:---:|:---:|:---:|:---:|
+| **150,000** | **62.0%** | **25.0%** (driver 18%, customer 7%) | **18:00** | **INR 47.3M** |
 
 ## What the data says
 
-Computed directly from `DATA/ncr_ride_bookings.csv` (150,000 bookings, 1 Jan to 30 Dec 2024):
+Computed directly from `DATA/ncr_ride_bookings.csv` (150,000 bookings, 1 Jan to 30 Dec 2024).
+
+<p align="center"><img src="docs/img/outcomes.svg" alt="Booking outcomes: 62% completed, 18% cancelled by driver, 7% no driver found, 7% cancelled by customer, 6% incomplete" width="720"></p>
+
+<p align="center"><img src="docs/img/hourly.svg" alt="Bookings by hour of day, peaking at 18:00" width="720"></p>
 
 | Outcome | Bookings | Share |
 |---|---|---|
@@ -24,7 +40,20 @@ Computed directly from `DATA/ncr_ride_bookings.csv` (150,000 bookings, 1 Jan to 
 - **Completed revenue is INR 47.3M**, about INR 508 per completed ride. Auto, Go Mini and Go Sedan are the most booked vehicle types.
 - **Almost no repeat customers.** 148,788 unique customer IDs across 150,000 bookings, so nearly every customer appears once. That limits what RFM, cohort retention and churn modelling can tell you on this dataset, and the churn model should be read as a demonstration of the method, not a business-ready score.
 
-## What is in the repo
+## How it fits together
+
+```mermaid
+flowchart LR
+    D[(Bookings CSV<br/>or database)] --> L[Loader + validator]
+    L --> A[Analytics<br/>RFM · cohorts · KPIs · time series]
+    L --> M[Models<br/>cancellation · churn · demand]
+    A --> API[FastAPI<br/>/metrics · /predict]
+    M --> API
+    API --> UI[Streamlit dashboard]
+```
+
+<details>
+<summary><b>Repo layout</b></summary>
 
 ```
 Uber-Analytics/
@@ -41,7 +70,10 @@ Uber-Analytics/
 └── Makefile
 ```
 
-**Models**
+</details>
+
+<details>
+<summary><b>Models</b> (cancellation, churn, demand)</summary>
 
 | Model | Predicts | Features |
 |---|---|---|
@@ -49,7 +81,11 @@ Uber-Analytics/
 | Churn | Will a customer be inactive for the next 30 days? | days since last ride, rides in the last 30 and 60 days, average booking value and rating, preferred vehicle and payment, completion rate, average distance |
 | Demand | Forecast of ride volume | time series of bookings |
 
-**API**
+</details>
+
+## API
+
+Start it, then open the interactive Swagger page at `http://localhost:8000/docs` and try every endpoint from the browser.
 
 | Endpoint | Returns |
 |---|---|
