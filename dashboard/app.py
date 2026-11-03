@@ -78,13 +78,22 @@ def _resolve_api_base_url() -> str:
     st.secrets raises FileNotFoundError when no secrets.toml exists, so it must not be
     evaluated eagerly as a default argument.
     """
+    default = "http://localhost:8000"
     env_value = os.getenv("API_BASE_URL")
     if env_value:
         return env_value
+    # Streamlit shows an error box whenever st.secrets is touched without a file,
+    # so only read it when a secrets file actually exists.
+    secrets_files = (
+        os.path.join(os.path.expanduser("~"), ".streamlit", "secrets.toml"),
+        os.path.join(os.getcwd(), ".streamlit", "secrets.toml"),
+    )
+    if not any(os.path.exists(p) for p in secrets_files):
+        return default
     try:
-        return st.secrets.get("API_BASE_URL", "http://localhost:8000")
+        return st.secrets.get("API_BASE_URL", default)
     except Exception:
-        return "http://localhost:8000"
+        return default
 
 
 API_BASE_URL = _resolve_api_base_url()
