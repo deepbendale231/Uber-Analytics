@@ -72,7 +72,22 @@ st.markdown("""
 # CONFIGURATION
 # ============================================================================
 
-API_BASE_URL = os.getenv("API_BASE_URL", st.secrets.get("API_BASE_URL", "http://localhost:8000"))
+def _resolve_api_base_url() -> str:
+    """Environment variable first, then Streamlit secrets, then the local default.
+
+    st.secrets raises FileNotFoundError when no secrets.toml exists, so it must not be
+    evaluated eagerly as a default argument.
+    """
+    env_value = os.getenv("API_BASE_URL")
+    if env_value:
+        return env_value
+    try:
+        return st.secrets.get("API_BASE_URL", "http://localhost:8000")
+    except Exception:
+        return "http://localhost:8000"
+
+
+API_BASE_URL = _resolve_api_base_url()
 REFRESH_INTERVAL = 60  # seconds
 CACHE_TTL = 300  # 5 minutes
 
