@@ -2,18 +2,18 @@
 <rect width='720' height='280' rx='12' fill='#0d1117'/>
 <text x='24' y='36' fill='#e6edf3' font-size='18' font-weight='600'>What happens to 150,000 bookings</text>
 <text x='24' y='80' fill='#c9d1d9' font-size='14'>Completed</text>
-<rect x='210' y='64' width='430' height='24' rx='5' fill='#3fb950'/>
-<text x='648' y='81' fill='#e6edf3' font-size='13'>93,000 (62.0%)</text>
+<rect x='200' y='64' width='330' height='24' rx='5' fill='#3fb950'/>
+<text x='538' y='81' fill='#e6edf3' font-size='13'>93,000 (62.0%)</text>
 <text x='24' y='124' fill='#c9d1d9' font-size='14'>Cancelled by Driver</text>
-<rect x='210' y='108' width='124' height='24' rx='5' fill='#f85149'/>
-<text x='342' y='125' fill='#e6edf3' font-size='13'>27,000 (18.0%)</text>
+<rect x='200' y='108' width='95' height='24' rx='5' fill='#f85149'/>
+<text x='303' y='125' fill='#e6edf3' font-size='13'>27,000 (18.0%)</text>
 <text x='24' y='168' fill='#c9d1d9' font-size='14'>No Driver Found</text>
-<rect x='210' y='152' width='48' height='24' rx='5' fill='#d29922'/>
-<text x='266' y='169' fill='#e6edf3' font-size='13'>10,500 (7.0%)</text>
+<rect x='200' y='152' width='37' height='24' rx='5' fill='#d29922'/>
+<text x='245' y='169' fill='#e6edf3' font-size='13'>10,500 (7.0%)</text>
 <text x='24' y='212' fill='#c9d1d9' font-size='14'>Cancelled by Customer</text>
-<rect x='210' y='196' width='48' height='24' rx='5' fill='#db6d28'/>
-<text x='266' y='213' fill='#e6edf3' font-size='13'>10,500 (7.0%)</text>
+<rect x='200' y='196' width='37' height='24' rx='5' fill='#db6d28'/>
+<text x='245' y='213' fill='#e6edf3' font-size='13'>10,500 (7.0%)</text>
 <text x='24' y='256' fill='#c9d1d9' font-size='14'>Incomplete</text>
-<rect x='210' y='240' width='41' height='24' rx='5' fill='#8b949e'/>
-<text x='259' y='257' fill='#e6edf3' font-size='13'>9,000 (6.0%)</text>
+<rect x='200' y='240' width='31' height='24' rx='5' fill='#8b949e'/>
+<text x='239' y='257' fill='#e6edf3' font-size='13'>9,000 (6.0%)</text>
 </svg>
